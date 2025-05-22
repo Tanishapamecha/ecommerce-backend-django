@@ -142,3 +142,6 @@ REST_FRAMEWORK = {
 
 
 # token :  b022d8a99b3060b723be2357e2e2e0ccc0af6c51
+
+# usera token      "token": "5ccbd1637bc8ea06b71a9e69efad392670ec5650"
+# userb token       "token": "874249dc45f1124b257e7503c4f0584a9382efa5"
