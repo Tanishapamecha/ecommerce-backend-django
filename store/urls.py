@@ -8,5 +8,5 @@ router.register(r'categories', CategoryViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api/cart/delete/', DeleteCartView.as_view(), name='delete-cart'),
+    path('cart/delete/', DeleteCartView.as_view(), name='delete-cart'),
 ]

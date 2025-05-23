@@ -38,8 +38,10 @@ class DeleteCartView(APIView):
 
     def delete(self, request):
         try:
-            cart = Cart.objects.get(user=request.user)
-            cart.delete()
-            return Response({"message": "Cart deleted successfully."}, status=status.HTTP_204_NO_CONTENT)
-        except Cart.DoesNotExist:
-            return Response({"error": "Cart does not exist."}, status=status.HTTP_404_NOT_FOUND)
+            carts = Cart.objects.filter(user=request.user)
+            if not carts.exists():
+                return Response({"error": "Cart does not exist."}, status=status.HTTP_404_NOT_FOUND)
+            carts.delete()
+            return Response({"message": "Cart(s) deleted successfully."}, status=status.HTTP_204_NO_CONTENT)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
