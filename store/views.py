@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework import viewsets, permissions, filters, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -9,15 +8,15 @@ from .models import Product, Category, Cart
 from .serializers import ProductSerializer, CategorySerializer
 
 
-# CRUD for categories
+# ViewSet to handle all CRUD operations for Category
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
 
-# CRUD for products + search, filter, ordering
+# ViewSet to handle CRUD for Products, with search, filter, and ordering
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.all()  # Add this line
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [filters.SearchFilter, filters.OrderingFilter, DjangoFilterBackend]
@@ -32,7 +31,7 @@ class ProductViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 
-# DELETE cart for current user
+# API View to delete the current user's cart
 class DeleteCartView(APIView):
     permission_classes = [IsAuthenticated]
 
