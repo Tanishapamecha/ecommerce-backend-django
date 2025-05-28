@@ -8,6 +8,6 @@ router.register(r'products', ProductViewSet)  # /api/products/
 router.register(r'categories', CategoryViewSet)  # /api/categories/
 
 urlpatterns = [
-    path('', include(router.urls)),  # Include all router URLs
-    path('cart/delete/', DeleteCartView.as_view(), name='delete-cart'),  # Endpoint to delete user's cart
+    path('', include(router.urls)),  
+    path('cart/delete/', DeleteCartView.as_view(), name='delete-cart'),  
 ]
