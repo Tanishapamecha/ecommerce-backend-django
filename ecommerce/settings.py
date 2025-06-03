@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'rest_framework',         # for REST API
     'store',                  # our ecommerce app
     'rest_framework.authtoken', # for token authentication
-    'django_filters',         # for filtering APIs
 ]
 
 # Middleware - runs on every request/response
